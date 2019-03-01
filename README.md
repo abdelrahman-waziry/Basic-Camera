@@ -1,2 +1,2 @@
 # Basic Camera
-#### Expermints with Expo Camera API
+#### Experiments with Expo Camera API

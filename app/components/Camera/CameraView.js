@@ -2,8 +2,6 @@ import React from 'react';
 import { Text, View, TouchableOpacity, StatusBar } from 'react-native';
 import { Camera, Permissions } from 'expo';
 import { STYLE_CONSTANTS } from '../consts';
-import Feather from '@expo/vector-icons/Feather';
-import EmptyState from '../EmptyState/EmptyState';
 
 const DOUBLE_PRESS_DELAY = 300;
 
@@ -68,8 +66,7 @@ export default class CameraView extends React.Component {
         this.camera.pausePreview();
       })
         this.camera.resumePreview();
-        console.log(image.uri)
-        // this.props.navigateToImage(image.uri, this.state.type)
+        this.props.navigateToImage(image.uri)
     }
   }
 

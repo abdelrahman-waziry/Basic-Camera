@@ -19,9 +19,10 @@ export default class Camera extends React.Component {
     return(
       <View style={{flex: 1, backgroundColor: '#000'}}>
         <CameraView 
-          navigateToImage={(uri, type) => {
-            this.props.navigateToImage(uri, type)
-            }} ref={(cameraView) => {this.cameraView = cameraView}}
+          navigateToImage={(uri) => {
+            this.props.navigation.navigate('CapturedImage', {
+              uri: uri,
+          })}} ref={(cameraView) => {this.cameraView = cameraView}}
         >
           <CameraActions
             cameraViewState={this.state.cameraViewState}

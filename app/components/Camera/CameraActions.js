@@ -15,7 +15,11 @@ export default class CameraActions extends Component {
                     }}
                     styles={styles.actionButton}
                     icon={
-                        <Feather name='zap' size={25} color='#fff' />
+                        <Feather 
+                            name={this.props.cameraViewState.flashMode == 'on' ? 'zap-off' : 'zap'} 
+                            size={25} 
+                            color='#fff'
+                        />
                     }
                 />
                 <ButtonIcon

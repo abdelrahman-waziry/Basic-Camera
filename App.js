@@ -1,25 +1,20 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Camera from '../CoolCamera/app/views/Camera'
+import { createAppContainer, createStackNavigator } from 'react-navigation';
+import Camera from './app/views/Camera';
+import CapturedImage from './app/components/Camera/CapturedImage';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Camera/>
-      </View>
-    );
-  }
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+const CameraStack = createStackNavigator({
+  Create: {
+    screen: Camera
   },
-  text: {
-    fontSize: 5
-  }
-});
+  CapturedImage: {
+    screen: CapturedImage
+  },
+},
+  {
+    headerMode: 'none',
+})
+
+
+
+export default createAppContainer(CameraStack);

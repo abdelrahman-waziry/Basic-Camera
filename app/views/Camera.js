@@ -15,6 +15,16 @@ export default class Camera extends React.Component {
     this.setState({cameraViewState: this.cameraView.state})
   }
 
+  willFocus = this.props.navigation.addListener(
+		'willFocus',
+		payload => {
+			console.log(payload)
+			this.cameraView.setState({
+				showLoading: false
+			}) 
+		}
+	)
+
   render() {
     return(
       <View style={{flex: 1, backgroundColor: '#000'}}>

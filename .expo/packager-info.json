@@ -1,9 +1,9 @@
 {
-  "devToolsPort": 19002,
+  "packagerPort": null,
+  "packagerPid": null,
   "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 14676,
-  "expoServerNgrokUrl": "https://ug-r7h.waziry.coolcamera.exp.direct",
-  "packagerNgrokUrl": "https://packager.ug-r7h.waziry.coolcamera.exp.direct",
-  "ngrokPid": 1076
+  "expoServerNgrokUrl": "https://zb-hsn.waziry.coolcamera.exp.direct",
+  "packagerNgrokUrl": "https://packager.zb-hsn.waziry.coolcamera.exp.direct",
+  "ngrokPid": 1412,
+  "devToolsPort": 19002
 }

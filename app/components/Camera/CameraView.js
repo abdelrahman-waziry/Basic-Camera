@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, View, TouchableOpacity, StatusBar } from 'react-native';
 import { Camera, Permissions } from 'expo';
 import { STYLE_CONSTANTS } from '../consts';
+import Loading from '../Loading/Loading';
 
 const DOUBLE_PRESS_DELAY = 300;
 
@@ -13,7 +14,8 @@ export default class CameraView extends React.Component {
       type: Camera.Constants.Type.back,
 	    image: {},
 	    isMounted: true,
-      flashMode: 'off'
+      flashMode: 'off',
+      showLoading: false,
     }
   }
 
@@ -64,8 +66,14 @@ export default class CameraView extends React.Component {
       let image = await new Promise(async resolve => {
         await this.camera.takePictureAsync({onPictureSaved : resolve, quality: 1});
         this.camera.pausePreview();
+        this.setState({
+          showLoading: true
+        })
       })
         this.camera.resumePreview();
+        this.setState({
+          showLoading: true
+        })
         this.props.navigateToImage(image.uri)
     }
   }
@@ -96,9 +104,12 @@ export default class CameraView extends React.Component {
           style={{
             flex: 1,
             backgroundColor: 'transparent',
-            flexDirection: 'row',
+            flexDirection: 'column',
             alignItems: 'center',
           }}>
+          {this.state.showLoading && 
+            <Loading/>
+          }
           {this.props.children}
         </View>
       </Camera>

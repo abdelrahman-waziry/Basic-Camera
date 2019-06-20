@@ -72,9 +72,9 @@ export default class CameraView extends React.Component {
       })
         this.camera.resumePreview();
         this.setState({
-          showLoading: true
+          showLoading: false
         })
-        this.props.navigateToImage(image.uri)
+        this.props.navigateToImage(image.uri, this.state.type)
     }
   }
 

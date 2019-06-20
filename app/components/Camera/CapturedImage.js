@@ -8,6 +8,29 @@ import { STYLE_CONSTANTS } from '../consts'
 export default class CapturedImage extends Component {
     constructor(props){
         super(props)
+        this.state = {
+            uri: '',
+        }
+    }
+
+    componentDidMount(){
+        const { navigation } = this.props
+        let type = navigation.getParam('type', '')
+        this.processCapturedImage(type)
+    }
+
+    async processCapturedImage(type){
+        const { navigation } = this.props
+        let uri = navigation.getParam('uri', '')
+        if(type == 1){
+            const manipResult = await ImageManipulator.manipulateAsync(uri, [
+                { flip: { horizontal: true } }
+            ]);
+            this.setState({ uri: manipResult.uri });
+        }
+        else {
+            this.setState({uri: uri})
+        }
     }
 
     render(){
@@ -21,7 +44,7 @@ export default class CapturedImage extends Component {
                     height: STYLE_CONSTANTS.DeviceHeight - StatusBar.currentHeight * 2,
                     width: STYLE_CONSTANTS.DeviceWidth,
                     marginTop: StatusBar.currentHeight
-                }} source={{uri: uri}}
+                }} source={{uri: this.state.uri}}
                 >
                 </ImageBackground>
             </View>

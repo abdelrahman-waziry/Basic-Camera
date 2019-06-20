@@ -18,7 +18,6 @@ export default class Camera extends React.Component {
   willFocus = this.props.navigation.addListener(
 		'willFocus',
 		payload => {
-			console.log(payload)
 			this.cameraView.setState({
 				showLoading: false
 			}) 
@@ -29,9 +28,10 @@ export default class Camera extends React.Component {
     return(
       <View style={{flex: 1, backgroundColor: '#000'}}>
         <CameraView 
-          navigateToImage={(uri) => {
+          navigateToImage={(uri, type) => {
             this.props.navigation.navigate('CapturedImage', {
               uri: uri,
+              type: type
           })}} ref={(cameraView) => {this.cameraView = cameraView}}
         >
           <CameraActions

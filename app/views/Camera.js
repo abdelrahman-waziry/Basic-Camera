@@ -2,17 +2,22 @@ import React from 'react';
 import { View } from 'react-native'
 import CameraView from '../components/Camera/CameraView'
 import CameraActions from '../components/Camera/CameraActions'
+import CameraSettings from '../components/Camera/CameraSettings';
 
 export default class Camera extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      cameraViewState: {}
+      flashMode: 'off',
+      type: 0,
     }
   }
 
   componentDidMount(){
-    this.setState({cameraViewState: this.cameraView.state})
+    this.setState({
+      flashMode: this.cameraView.state.flashMode,
+      type: this.cameraView.state.type
+    })
   }
 
   willFocus = this.props.navigation.addListener(
@@ -27,6 +32,7 @@ export default class Camera extends React.Component {
   render() {
     return(
       <View style={{flex: 1, backgroundColor: '#000'}}>
+        <CameraSettings/>
         <CameraView 
           navigateToImage={(uri, type) => {
             this.props.navigation.navigate('CapturedImage', {
@@ -35,14 +41,21 @@ export default class Camera extends React.Component {
           })}} ref={(cameraView) => {this.cameraView = cameraView}}
         >
           <CameraActions
-            cameraViewState={this.state.cameraViewState}
+            flashMode={this.state.flashMode}
+            type={this.state.type}
             captureImage={() => {
               this.cameraView.captureImage()
             }}
             flipCamera={() => {
+              this.setState({
+                flashMode: this.state.type === 0 ? 1 : 0
+              })
               this.cameraView.flipCamera()
             }}
             toggleFlash={() => {
+              this.setState({
+                flashMode: this.state.flashMode === 'on' ? 'off' : 'on'
+              })
               this.cameraView.toggleFlash()
             }}
         />

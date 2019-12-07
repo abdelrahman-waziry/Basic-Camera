@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View, TouchableOpacity, StatusBar } from 'react-native';
-import { Camera, Permissions } from 'expo';
+import * as Permissions from 'expo-permissions';
+import { Camera } from 'expo-camera';
 import { STYLE_CONSTANTS } from '../consts';
 import Loading from '../Loading/Loading';
 

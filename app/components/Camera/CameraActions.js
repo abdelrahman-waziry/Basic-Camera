@@ -16,7 +16,7 @@ export default class CameraActions extends Component {
                     styles={styles.actionButton}
                     icon={
                         <Feather 
-                            name={this.props.cameraViewState.flashMode == 'on' ? 'zap-off' : 'zap'} 
+                            name={this.props.flashMode === 'on' ? 'zap' : 'zap-off'} 
                             size={25} 
                             color='#fff'
                         />
@@ -39,7 +39,7 @@ export default class CameraActions extends Component {
                     }}
                     styles={styles.actionButton}
                     icon={
-                        <Feather name={this.props.cameraViewState.type == 0 ?
+                        <Feather name={this.props.type === 0 ?
                             'refresh-cw' : 'refresh-ccw'} size={25} color='#fff' />
                     }
                 />

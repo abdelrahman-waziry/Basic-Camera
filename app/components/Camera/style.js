@@ -133,5 +133,10 @@ export const styles = StyleSheet.create({
         alignSelf: 'center',
         flexDirection: 'row',
         width: '90%'
+    },
+    cameraSettingsContainer: {
+        position: 'absolute',
+        left: 5,
+        top: 5,
     }
 })

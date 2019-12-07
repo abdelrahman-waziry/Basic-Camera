@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {View, StatusBar, ImageBackground} from 'react-native'
-import {ImageManipulator} from 'expo'
+import * as ImageManipulator from 'expo-image-manipulator'
 import {styles} from './style'
 
 import { STYLE_CONSTANTS } from '../consts'
@@ -24,7 +24,7 @@ export default class CapturedImage extends Component {
         let uri = navigation.getParam('uri', '')
         if(type == 1){
             const manipResult = await ImageManipulator.manipulateAsync(uri, [
-                { flip: { horizontal: true } }
+                { flip: 'horizontal' }
             ]);
             this.setState({ uri: manipResult.uri });
         }
